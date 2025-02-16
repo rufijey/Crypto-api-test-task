@@ -18,9 +18,10 @@ final class LoadDataSchedule implements ScheduleProviderInterface
 
     public function getSchedule(): Schedule
     {
+
         return (new Schedule())
             ->with(
-                RecurringMessage::cron('0 * * * *', new RunCommandMessage('rates:load'))
+                RecurringMessage::cron('1 * * * *', new RunCommandMessage('rates:load'))
             );
     }
 }

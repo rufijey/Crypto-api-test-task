@@ -16,12 +16,4 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN curl -sS https://get.symfony.com/cli/installer | bash \
-    && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
-
 WORKDIR /var/www
-
-
-#CMD ["php", "bin/console", "messenger:consume"]
-
-#CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]

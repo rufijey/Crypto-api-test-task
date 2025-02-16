@@ -37,6 +37,16 @@ class CryptoRateService
         $cryptoRates = $this->cryptoRateRepository
             ->getFiltered($startTime, $endTime, $currencies, $cryptocurrencies, $limit);
 
+
+        return new RateListResponse($this->groupCryptoRates($cryptoRates));
+    }
+
+    /**
+     * @param array<CryptoRate> $cryptoRates
+     * @return array<string, array<RateResponse>>
+     */
+    private function groupCryptoRates(array $cryptoRates) : array
+    {
         $groupedRates = [];
 
         foreach ($cryptoRates as $cryptoRate) {
@@ -48,8 +58,7 @@ class CryptoRateService
 
             $groupedRates[$key][] = new RateResponse($cryptoRate);
         }
-
-        return new RateListResponse($groupedRates);
+        return $groupedRates;
     }
 
 
