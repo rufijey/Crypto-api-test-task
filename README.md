@@ -9,6 +9,8 @@ MESSENGER_TRANSPORT_DS=doctrine://default?auto_setup=0<br>
 
 Используйте комманду **docker-compose exec -it app bash**, для открытия терминала внутри контейнера app.<br>
 
+Внутри контейнера выполните команду **composer install**, чтобы установить зависимости проекта.
+
 Далее выполните комманды **php bin/console doctrine:migrations:migrate**, **php bin/console doctrine:fixtures:load**, 
 для создания миграций и заполнения данными валют соответственно.<br>
 
